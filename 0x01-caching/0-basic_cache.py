@@ -4,19 +4,14 @@ from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
-    """Basic cache class"""
-
-    def __init__(self):
-        """initialize the class using the parent"""
-        BaseCaching.__init__(self)
+    """Basic Cache class"""
 
     def put(self, key, item):
-        """adding caching"""
-        if key is not None or item is not None:
+        """add to cache"""
+        if key is not None and item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
-        """get the cache"""
-        if key is not None and key in self.cache_data.keys():
+        """get from cache"""
+        if key is not None and key in self.cache_data:
             return self.cache_data[key]
-        return None
