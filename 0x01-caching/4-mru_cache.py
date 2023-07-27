@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Caching module"""
 from collections import deque
-BaseCaching = __import__('base_caching').BaseCaching
+from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):
