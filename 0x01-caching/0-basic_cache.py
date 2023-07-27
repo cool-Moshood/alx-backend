@@ -6,6 +6,10 @@ from base_caching import BaseCaching
 class BasicCache(BaseCaching):
     """Basic cache class"""
 
+    def __init__(self):
+        """initialize the class using the parent"""
+        BaseCaching.__init__(self)
+
     def put(self, key, item):
         """adding caching"""
         if key is not None or item is not None:
