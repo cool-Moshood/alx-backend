@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """LIFO CACHING"""
+from collections import deque
 from base_caching import BaseCaching
 
 
