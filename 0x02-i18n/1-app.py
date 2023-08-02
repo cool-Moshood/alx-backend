@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """a flask app"""
-import babel
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
@@ -13,7 +12,7 @@ class Config:
 
 
 app = Flask(__name__)
-Babel = Babel(app)
+babel = Babel(app)
 
 
 @app.route("/")
