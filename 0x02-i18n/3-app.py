@@ -3,9 +3,6 @@
 from flask import Flask, render_template, request
 from flask_babel import Babel, gettext as _
 
-app = Flask(__name__)
-babel = Babel(app)
-
 
 class Config(object):
     """config class"""
@@ -14,7 +11,8 @@ class Config(object):
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-
+app = Flask(__name__)
+babel = Babel(app)
 app.config.from_object(Config)
 
 
