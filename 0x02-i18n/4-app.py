@@ -3,9 +3,6 @@
 from flask import Flask, render_template, request
 from flask_babel import Babel, gettext as _
 
-app = Flask(__name__)
-Babel = Babel(app)
-
 
 class Config:
     """confi class"""
@@ -14,18 +11,21 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
+app = Flask(__name__)
+babel = Babel(app)
 app.config.from_object(Config)
 
 
+@babel.localeselector
 def get_locale():
     """Check if the lang parameter is specified in the query string"""
-    user_lang = request.args.get("locale")
-    if user_lang and user_lang.lower() in app.config["LANGUAGES"]:
-        print(user_lang)
-        return user_lang.lower()
+    user_lang = request.args['locale']
+    if user_lang in ['en', 'fr']:
+        return user_lang
 
     """If lang parameter is not specified, use Accept-Language header"""
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return request.accept_languages.best_match(Config.LANGUAGES)
+
 
 @app.route("/")
 def index():

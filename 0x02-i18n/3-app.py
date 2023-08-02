@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 from flask_babel import Babel, gettext as _
 
 app = Flask(__name__)
-Babel = Babel(app)
+babel = Babel(app)
 
 
 class Config:
@@ -17,6 +17,7 @@ class Config:
 app.config.from_object(Config)
 
 
+@babel.localeselector
 def get_locale():
     """Check if the lang parameter is specified in the query string"""
     user_lang = request.args.get("lang")
@@ -25,6 +26,7 @@ def get_locale():
 
     """If lang parameter is not specified, use Accept-Language header"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
+
 
 @app.route("/")
 def index():
