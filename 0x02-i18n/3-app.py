@@ -7,8 +7,9 @@ app = Flask(__name__)
 babel = Babel(app)
 
 
-class Config:
+class Config(object):
     """config class"""
+
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -33,4 +34,5 @@ def index():
 
 
 if __name__ == '__main__':
+    """run setup"""
     app.run(port=5000)
