@@ -12,7 +12,7 @@ class Config:
 
 
 app = Flask(__name__)
-Babel = Babel(app)
+babel = Babel(app)
 app.config.from_object(Config)
 
 
