@@ -23,8 +23,6 @@ def get_locale():
     user_lang = request.args.get("lang")
     if user_lang in app.config["LANGUAGES"]:
         return user_lang
-
-    """If lang parameter is not specified, use Accept-Language header"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
