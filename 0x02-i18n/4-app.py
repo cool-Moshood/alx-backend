@@ -5,7 +5,7 @@ from flask_babel import Babel, gettext as _
 
 
 class Config:
-    """confi class"""
+    """config class"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -22,8 +22,6 @@ def get_locale():
     user_lang = request.args['locale']
     if user_lang in ['en', 'fr']:
         return user_lang
-
-    """If lang parameter is not specified, use Accept-Language header"""
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
